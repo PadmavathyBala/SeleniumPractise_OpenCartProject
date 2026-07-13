@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG" monitorInterval="30">
+
+    <Properties>
+        <Property name="LOG_DIR">logs</Property>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level [%logger{36}] - %msg%n</Property>
+        <Property name="TEST_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+
+        <!-- Console Appender: Outputs logs to the terminal during test run -->
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </Console>
+
+        <!-- Main Test Execution Log: All levels, rolls over daily -->
+        <RollingFile name="TestExecutionAppender"
+                     fileName="${LOG_DIR}/automation.log"
+                     filePattern="${LOG_DIR}/archive/automation-%d{yyyy-MM-dd}-%i.log.gz"
+                     append="false">
+            <PatternLayout pattern="${TEST_PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+                <SizeBasedTriggeringPolicy size="20MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="30" />
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <!-- Root logger: catch-all for anything not explicitly configured -->
+        <Root level="DEBUG">
+            <AppenderRef ref="TestExecutionAppender" />
+        </Root>
+
+    </Loggers>
+
+</Configuration>
