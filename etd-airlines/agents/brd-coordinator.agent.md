@@ -28,3 +28,17 @@ After each delegation, briefly state which agent you're handing off to and
 why, then show the sub-agent's output before moving to the next stage. Do
 not skip stages, and do not let a later-stage agent silently redo an earlier
 stage's job.
+
+**After Stage 4 completes, always output an "Agent Execution Log" section
+listing every agent invoked, in order, with one line each, e.g.:
+
+## Agent Execution Log
+1. brd-draft-jira — invoked, returned draft (~X words)
+2. brd-reviewer — invoked, returned N findings
+3. brd-reviser — invoked, returned revised draft
+4. brd-finalizer — invoked, saved to docs/BRD.md
+
+If any stage was skipped or a sub-agent's output wasn't actually used,
+say so explicitly here rather than omitting it.**
+
+
