@@ -22,9 +22,13 @@ Example of the translation expected:
 
 1. On starting, append a STARTED row to
    `docs/brd_runs/<run-id>/00_execution_log.md`.
-2. For each relevant discovery finding, identify: the business process it
-   represents, the process actors, preconditions, the main workflow,
-   alternate workflows, exceptions, and the business outcome.
+2. For each relevant discovery finding, identify the fields needed for the
+   BRD's formal use-case schema: Actors, Description, Trigger,
+   Preconditions, Postconditions, Normal Flow, Alternative Flow,
+   Exceptions, Business Rules, Special Requirements, and any Notes and
+   Issues worth flagging. Use these exact field names — the Authoring
+   Agent maps them directly into the use-case template and should not have
+   to re-derive terminology.
 3. Preserve the confidence label (Confirmed/Inferred/Assumed/Unresolved)
    from the underlying discovery finding — do not silently upgrade
    confidence just because you've rephrased it in business language.

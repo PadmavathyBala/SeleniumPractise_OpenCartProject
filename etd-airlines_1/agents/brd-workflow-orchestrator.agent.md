@@ -55,10 +55,18 @@ method references). Wait for the traceability matrix.
   assuming they were.
 - Confirm the Step 7 traceability matrix references match real
   requirement IDs from the revised BRD — flag any mismatch.
+- Confirm the Front Matter Approvals table is genuinely blank (no invented
+  names/signatures) and that Authors lists the run ID, not human names. If
+  brd-authoring filled these in anyway, strip them back out yourself
+  before finalizing — this is a hard rule, not a style preference.
+- Confirm Section 7 (Success Criteria) and Appendices B/D (diagrams,
+  screenshots) are honestly marked Assumed/Unresolved/Not Generated rather
+  than containing invented metrics or described-but-nonexistent diagrams.
 - Append a final row to the execution log: status `VALIDATED` with a note
-  on any unresolved findings or mismatches found during validation.
-- Assemble the final document (revised BRD + traceability matrix,
-  appended as its own section) and save it to
+  on any unresolved findings, mismatches, or front-matter corrections made
+  during validation.
+- Assemble the final document (front matter + revised BRD + traceability
+  matrix as Appendix F) and save it to
   `docs/brd_runs/<run-id>/08_final_BRD.md`.
 - Present the final document to the user, along with a summary noting the
   run ID, confirmation that all 7 agents were invoked, and any unresolved

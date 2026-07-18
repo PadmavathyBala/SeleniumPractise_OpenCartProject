@@ -41,6 +41,11 @@ Specifically flag:
 - Unverified assumptions stated as if confirmed
 - Requirements that cannot be tested (vague terms like "quickly,"
   "user-friendly," "robust" without a measurable definition)
+- Any invented names or signatures in the Approvals table (this must
+  always be blank — flag it as a serious issue if it isn't)
+- Any Success Criteria numbers, or Appendix B/D diagram/screenshot
+  descriptions, that read as fabricated rather than genuinely
+  Confirmed/derived from the codebase
 
 For every issue found, give: the requirement ID or section affected, the
 issue, and a recommended revision. Example:
