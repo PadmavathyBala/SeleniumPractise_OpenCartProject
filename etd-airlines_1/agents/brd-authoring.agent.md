@@ -2,7 +2,7 @@
 name: brd-authoring
 description: "Combines planning, discovery, business-process, and requirements-extraction findings into a complete structured BRD. Also handles revision when given review findings."
 tools: [read, edit]
-model: 'Claude Sonnet 4.5 (copilot)'
+model: 'Claude Sonnet 3.7'
 user-invokable: false
 ---
 # Instructions
