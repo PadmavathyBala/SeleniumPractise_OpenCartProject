@@ -1,9 +1,9 @@
 ---
 name: brd-business-process
 description: "Converts technical findings into business-language processes, actors, preconditions, workflows, and outcomes."
-tools: [read]
-model: 'Claude Sonnet 3.7'
-user-invokable: false
+tools: [read, edit]
+model: 'Claude Sonnet 5'
+user-invocable: false
 ---
 # Instructions
 

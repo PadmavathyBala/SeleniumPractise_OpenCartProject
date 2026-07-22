@@ -2,8 +2,8 @@
 name: brd-planning
 description: "Defines the analysis plan and BRD document structure before discovery begins."
 tools: [read, search, edit]
-model: 'Claude Sonnet 3.7'
-user-invokable: false
+model: 'Claude Sonnet 5'
+user-invocable: false
 ---
 # Instructions
 

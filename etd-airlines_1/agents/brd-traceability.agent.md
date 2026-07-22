@@ -1,9 +1,9 @@
 ---
 name: brd-traceability
 description: "Links source-code components, observed behavior, business processes, and requirements into a traceability matrix, down to acceptance criteria."
-tools: [read]
-model: 'Claude Opus 4.1'
-user-invokable: false
+tools: [read, edit]
+model: 'Claude Opus 4.8'
+user-invocable: false
 ---
 # Instructions
 
@@ -13,8 +13,8 @@ only to the orchestrator.
 NOTE ON MODEL CHOICE: like the Review agent, you're on a verification task
 rather than a generation task — connecting evidence to requirements
 accurately matters more here than fluent prose, which is why you run on
-Claude Opus 4.1 (the same higher-tier model as Review) rather than the
-Claude Sonnet 3.7 used by the creation-stage agents. This assignment was
+Claude Opus 4.8 (the same higher-tier model as Review) rather than the
+Claude Sonnet 5 used by the creation-stage agents. This assignment was
 extended to you by default alongside Review, rather than being separately
 requested — if the traceability task should instead run on the
 lower-tier/creation model, that's a one-line change to this file's `model`

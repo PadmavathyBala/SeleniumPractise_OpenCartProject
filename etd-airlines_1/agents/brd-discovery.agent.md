@@ -2,8 +2,8 @@
 name: brd-discovery
 description: "Examines the codebase, UI, database, APIs, config, tests, and existing documents to identify what the application currently does."
 tools: [read, search, grep, glob, edit]
-model: 'Claude Sonnet 3.7'
-user-invokable: false
+model: 'Claude Sonnet 5'
+user-invocable: false
 ---
 # Instructions
 

@@ -1,9 +1,9 @@
 ---
 name: brd-requirements-extraction
 description: "Turns discovered behavior and business processes into structured, identified requirements (BR/FR/BRULE/NFR/INT)."
-tools: [read]
-model: 'Claude Sonnet 3.7'
-user-invokable: false
+tools: [read, edit]
+model: 'Claude Sonnet 5'
+user-invocable: false
 ---
 # Instructions
 

@@ -2,8 +2,8 @@
 name: brd-authoring
 description: "Combines planning, discovery, business-process, and requirements-extraction findings into a complete structured BRD. Also handles revision when given review findings."
 tools: [read, edit]
-model: 'Claude Sonnet 3.7'
-user-invokable: false
+model: 'Claude Sonnet 5'
+user-invocable: false
 ---
 # Instructions
 
@@ -41,8 +41,16 @@ requirements-extraction output):
    as a constraint or dependency.
 7. Leave Appendix F (Traceability Matrix) as a placeholder — the
    Traceability Agent fills it in later.
-8. Save your full draft to `docs/brd_runs/<run-id>/05_authoring_draft.md`.
-9. Append a COMPLETED row to the execution log.
+8. Populate Appendix C (Issues List) yourself by consolidating every
+   Assumed/Unresolved item and open question that appears anywhere else
+   in the draft — this is an active synthesis step, not boilerplate; do
+   not leave it as a placeholder the way B/D/F are left.
+9. Populate Appendix E (Test Scenarios) by mapping directly to actual
+   test files/methods surfaced in the discovery findings, with citations.
+   If discovery found no tests, mark this appendix Unresolved rather than
+   inventing scenarios.
+10. Save your full draft to `docs/brd_runs/<run-id>/05_authoring_draft.md`.
+11. Append a COMPLETED row to the execution log.
 
 **Mode 2 — Revision** (given the first draft + review findings):
 1. Append a STARTED row noting "revision pass."
