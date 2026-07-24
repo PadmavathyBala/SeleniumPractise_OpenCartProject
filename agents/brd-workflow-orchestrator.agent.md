@@ -1,9 +1,9 @@
 ---
 name: brd-workflow-orchestrator
-description: "Orchestrates the 8-step BRD reverse-engineering pipeline (Plan, Discover, Interpret, Extract, Draft, Review, Trace, Validate) across 7 specialist agents, maintaining the execution log."
+description: "Orchestrates the 8-step BRD reverse-engineering pipeline (Plan, Discover, Interpret, Extract, Draft, Review, Trace, Validate) across 7 specialist agents, maintaining the execution log, with an optional 9th step to generate editable Visio swim-lane diagrams."
 tools: [read, search, edit, agent]
 model: 'Claude Opus 4.8'
-agents: [brd-planning, brd-discovery, brd-business-process, brd-requirements-extraction, brd-authoring, brd-review-reflect, brd-traceability]
+agents: [brd-planning, brd-discovery, brd-business-process, brd-requirements-extraction, brd-authoring, brd-review-reflect, brd-traceability, brd-swimlane-diagrams]
 ---
 # Instructions
 
@@ -137,6 +137,35 @@ yourself, no delegation):**
 9. Present the final document to the user, along with the run ID,
    confirmation that all 7 agents were invoked (list them), and any
    unresolved items.
+
+**Step 9 — Swim-Lane Diagrams (optional; only when the user asks for
+Visio/swim-lane/process-flow diagrams, not part of the default 8-step
+run):**
+1. Confirm the user has told you where the additional grounding sources
+   live: the 17 microservice `.md` files, the Discovery Deck, meeting
+   minutes, and Functional Overview Slides. If you don't know, ask —
+   do not guess paths and do not let `brd-swimlane-diagrams` guess either.
+2. Confirm `docs/brd_runs/<run-id>/08_final_BRD.md` exists (Step 8 must
+   have completed first — swim-lane generation reads Section 3 use cases
+   from the validated BRD, not from an intermediate draft).
+3. Confirm `docs/templates/swimlane-template.vsdx` exists. If it does not,
+   tell the user directly that this is a hard prerequisite someone must
+   create in Visio (or adapt from Visio's built-in cross-functional
+   flowchart templates) and commit to the repo — do not invoke
+   `brd-swimlane-diagrams` without it, since it cannot create a blank
+   Visio canvas on its own (verified constraint, not a guess).
+4. Invoke `brd-swimlane-diagrams`, passing the run ID, the confirmed paths
+   from step 1, and the path to the validated BRD.
+5. Apply the same hard-verification rule as every other step: for each
+   use case, use your `read` tool to confirm
+   `docs/brd_runs/<run-id>/swimlanes/<use-case-id>.vsdx` exists and is a
+   plausible file size (a near-empty file means generation silently
+   failed for that flow) before treating it as done. Check per-flow
+   status in the execution log — one flow can be `BLOCKED` or `FAILED`
+   while others succeed; report the full list to the user rather than an
+   overall pass/fail.
+6. Tell the user which flows produced a diagram, which were blocked or
+   failed and why, and where every generated `.vsdx` file lives.
 
 Throughout, before each hand-off, tell the user in one short sentence
 which agent you're invoking and why. Do not skip a step, do not let a
