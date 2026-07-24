@@ -137,3 +137,33 @@ Every agent in this pipeline MUST, using its file-write tool:
 The log file is append-only. No agent overwrites earlier rows. This log,
 plus every numbered draft file, is the eval artifact for this pipeline —
 treat writing it as part of the task, not optional bookkeeping.
+
+## Swim-lane diagram generation (Step 9, optional)
+
+A ninth, optional step exists for generating executive-ready, editable MS
+Visio (.vsdx) swim-lane diagrams — one per use case/process flow in the
+validated BRD — handled by `brd-swimlane-diagrams`. This is invoked
+separately from the default 8-step run, only when requested.
+
+**Additional grounding sources**, beyond the BRD itself: the 17
+microservice `.md` files, the Discovery Deck, meeting minutes, and the
+Functional Overview Slides. An element (actor, step, decision gate,
+business rule, or integration point) is drawable only if corroborated in
+at least one of these sources or the BRD itself — anything else is
+excluded from the diagram and logged as Unresolved in a companion
+`<use-case-id>.flow.json`, not drawn with a hedge.
+
+**Hard prerequisite:** a base Visio template at
+`docs/templates/swimlane-template.vsdx`, containing reusable master
+shapes for lane containers, start/end, process, decision, and
+integration-call shapes, plus a connector. This must be created once, by
+a human, in real Visio (or adapted from one of Visio's built-in
+cross-functional flowchart templates) and committed to the repo — the
+generation tooling opens and populates this template, it does not create
+a blank Visio canvas from nothing. Do not attempt Step 9 without it.
+
+Output convention: `docs/brd_runs/<run-id>/swimlanes/<use-case-id>.vsdx`,
+alongside its `<use-case-id>.flow.json` audit trail. Update Appendix B of
+the BRD (Analysis Models) to point to these files once generated, rather
+than leaving it marked Not Generated, if the user asks for the BRD to be
+re-finalized after Step 9 runs.
